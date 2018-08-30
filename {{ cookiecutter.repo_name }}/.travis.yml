@@ -1,0 +1,15 @@
+language: cpp
+
+os:
+    - osx
+
+before_install:
+    - git clone --recursive --depth 1 https://github.com/supercollider/supercollider.git ../supercollider
+
+before_script:
+    - mkdir build
+    - cd build
+    - cmake -DCMAKE_INSTALL_PREFIX=_install -DCMAKE_BUILD_TYPE=Release -DCMAKE_PATH=../supercollider ..
+
+script:
+    - cmake --build . --target install

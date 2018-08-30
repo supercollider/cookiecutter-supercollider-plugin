@@ -1,0 +1,11 @@
+{
+    "project_name": "Simple Gain",
+    "plugin_description": "A simple audio volume gain plugin",
+    "full_name": "Joe Doe",
+    "domain": "example.com",
+    "plugin_name": "{{ cookiecutter.project_name|replace(' ', '') }}",
+    "github_username": "{{ cookiecutter.full_name|lower|replace(' ', '.') }}",
+    "email": "{{ cookiecutter.github_username }}@{{ cookiecutter.domain }}",
+    "repo_name": "{{ cookiecutter.project_name|lower|replace(' ', '') }}",
+    "plugin_uri": "http://{{ cookiecutter.domain }}/plugins/{{ cookiecutter.repo_name }}"
+}
