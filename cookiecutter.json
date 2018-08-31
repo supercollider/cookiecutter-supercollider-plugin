@@ -1,6 +1,7 @@
 {
     "full_path_to_supercollider_source": "/home/wendy/supercollider (if you haven't cloned it yet, do that first! Press Ctrl-C to exit this script.",
     "project_name": "Simple Gain",
+    "project_namespace": "{{ cookiecutter.project_name|replace(' ', '') }}",
     "repo_name": "{{ cookiecutter.project_name|lower|replace(' ', '') }}",
     "plugin_name": "{{ cookiecutter.project_name|replace(' ', '') }}",
     "plugin_description": "A simple audio volume gain plugin",

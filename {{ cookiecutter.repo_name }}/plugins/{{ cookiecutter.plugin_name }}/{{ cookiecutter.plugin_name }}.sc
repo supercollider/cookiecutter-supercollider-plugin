@@ -1,6 +1,6 @@
 {{ cookiecutter.plugin_name }} : UGen {
-	*ar { |placeholder /* TODO */|
-		/* TODO */ ^this.multiNew('audio', placeholder);
+	*ar { |input, gain|
+		/* TODO */ ^this.multiNew('audio', input, gain);
 	}
 	checkInputs {
 		/* TODO */
