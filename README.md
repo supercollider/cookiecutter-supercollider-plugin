@@ -3,8 +3,8 @@ cookiecutter-supercollider-plugin
 
 A [cookiecutter] project template for [SuperCollider] server plugins.
 
-To create a SuperCollider server plugin using this template, install cookiecutter (see the
-[installation instructions]) and then run:
+To create a SuperCollider server plugin using this template, [install cookiecutter][installation
+instructions] and then run:
 
     $ cookiecutter https://github.com/supercollider/cookiecutter-supercollider-plugin
 
