@@ -14,7 +14,7 @@ print('\nRunning post-project-generation hook...\n')
 print('Initializing new Git repository')
 check_call(['git', 'init'])
 print('Running CMake generation script')
-check_call([
+call([
     'python',
     script_path,
     '.',
