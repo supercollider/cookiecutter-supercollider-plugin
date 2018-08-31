@@ -1,13 +1,10 @@
 {
-    "if_you_have_not_downloaded_supercollider_source_do_it_now": "Abort this process with Ctrl-C",
-    "full_path_to_supercollider_source": "/home/wendy/supercollider",
+    "full_path_to_supercollider_source": "/home/wendy/supercollider (if you haven't cloned it yet, do that first! Press Ctrl-C to exit this script.",
     "project_name": "Simple Gain",
     "plugin_description": "A simple audio volume gain plugin",
     "full_name": "Wendy Carlos",
     "plugin_name": "{{ cookiecutter.project_name|replace(' ', '') }}",
     "github_username": "{{ cookiecutter.full_name|lower|replace(' ', '.') }}",
     "email": "{{ cookiecutter.github_username }}@site.com",
-    "repo_name": "{{ cookiecutter.project_name|lower|replace(' ', '') }}",
-    "plugin_uri": "http://{{ cookiecutter.domain }}/plugins/{{ cookiecutter.repo_name }}"
-
+    "repo_name": "{{ cookiecutter.project_name|lower|replace(' ', '') }}"
 }
