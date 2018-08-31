@@ -82,10 +82,10 @@ Advanced instructions
 
 ### Continuous Integration: Travis-CI and AppVeyor
 
-Your auto-generated project will contain configuration files for the [Travis-CI] and [AppVeyor]
-integration services. These are tools that let you see how your project compiles on a totally fresh
-and isolated system. The Travis-CI script is configured for building on Linux (Ubuntu 14.04) and
-MacOS; the AppVeyor script is configured for both 32-bit and 64-bit Windows builds.
+Your auto-generated project will contain configuration files for the [Travis-CI][Travis] and
+[AppVeyor] integration services. These are tools that let you see how your project compiles on a
+totally fresh and isolated system. The Travis-CI script is configured for building on Linux (Ubuntu
+14.04) and MacOS; the AppVeyor script is configured for both 32-bit and 64-bit Windows builds.
 
 Every time you update your remote repository on GitHub, these scripts will run so you can see
 whether or not your project builds properly in each of the tested environments.
