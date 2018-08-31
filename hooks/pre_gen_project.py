@@ -7,7 +7,7 @@ import sys
 
 sc_path = '{{ cookiecutter.full_path_to_supercollider_source }}'
 
-print('\nRunning pre-project-generation hook...\n')
+print('\nRunning pre-project-generation hook...')
 
 print('\nChecking Python version...')
 
