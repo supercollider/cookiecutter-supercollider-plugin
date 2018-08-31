@@ -1,0 +1,26 @@
+class:: {{ cookiecutter.plugin_name }}
+summary:: {{ cookicutter.plugin_description }}
+related:: TODO
+categories:: UGens>TODO
+
+description::
+
+{{ cookicutter.plugin_description }}
+
+
+classmethods::
+
+method::ar, kr
+
+argument::TODO
+
+argument::TODO
+
+
+examples::
+
+code::
+
+{ {{ cookicutter.plugin_name }}.ar(/* TODO */) }.play
+
+::
