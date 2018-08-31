@@ -31,4 +31,13 @@ print('\nMaking initial Git commit')
 check_call(['git', 'add', '-A'])
 check_call(['git', 'commit', '-m', 'Initial commit'])
 
-print('\nDone!')
+print('\nYour project was successfully created!\n')
+
+post_info = '''
+Check the README in the cookiecutter project and the README in your generated
+project for helpful information such as how to build your project, how to set up
+continuous integration, how to automatically deploy releases to GitHub, and how
+to tweak the project itself.
+'''
+
+print(post_info)
