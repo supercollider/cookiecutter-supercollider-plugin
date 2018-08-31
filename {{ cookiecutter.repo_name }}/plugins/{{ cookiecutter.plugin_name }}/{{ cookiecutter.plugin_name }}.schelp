@@ -1,11 +1,11 @@
 class:: {{ cookiecutter.plugin_name }}
-summary:: {{ cookicutter.plugin_description }}
+summary:: {{ cookiecutter.plugin_description }}
 related:: TODO
 categories:: UGens>TODO
 
 description::
 
-{{ cookicutter.plugin_description }}
+{{ cookiecutter.plugin_description }}
 
 
 classmethods::
@@ -21,6 +21,6 @@ examples::
 
 code::
 
-{ {{ cookicutter.plugin_name }}.ar(/* TODO */) }.play
+{ {{ cookiecutter.plugin_name }}.ar(/* TODO */) }.play
 
 ::
