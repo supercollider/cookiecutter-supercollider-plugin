@@ -11,9 +11,9 @@ instructions] and then run:
 and answer the questionnaire. See the [cookiecutter documentation] on how to change the default
 values for these prompts.
 
-After filling out the questionnaire, cookiecutter will clone the project, filling in all the
-placeholders with your supplied values; run a Python script from the SuperCollider project to set up
-your CMake files, and set up a git repository.
+After filling out the questionnaire, cookiecutter will clone the project, fill in placeholders with
+your supplied information, run a Python script from the SuperCollider project to set up your CMake
+files, and finally set up a git repository.
 
 Here is an example:
 
