@@ -1,4 +1,5 @@
 {
+    "full_path_to_supercollider_source": "If you haven't downloaded it yet, quit and do it now!",
     "project_name": "Simple Gain",
     "plugin_description": "A simple audio volume gain plugin",
     "full_name": "Joe Doe",
