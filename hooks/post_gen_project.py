@@ -3,6 +3,7 @@
 '''Init git repository and make initial commit.'''
 
 from subprocess import check_call
+from subprocess import call
 import os
 
 git_url = 'git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}'
