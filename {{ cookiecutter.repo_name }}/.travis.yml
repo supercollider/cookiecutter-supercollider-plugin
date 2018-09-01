@@ -21,13 +21,13 @@ script:
 before_deploy:
     - mkdir -p $HOME/artifacts
     - cd $TRAVIS_BUILD_DIR/build/_install
-    - zip -r --symlinks $HOME/artifacts/{{ cookiecutter.repo_name }}-$TRAVIS_OS_NAME.zip *
+    - zip -r --symlinks $HOME/artifacts/{{ cookiecutter.repo_name }}-$TRAVIS_OS_NAME-$TRAVIS_TAG.zip *
 
 deploy:
     # github releases - only tags
     - provider: releases
       api_key: $GITHUB_TOKEN
-      file: $HOME/artifacts/{{ cookiecutter.repo_name }}-$TRAVIS_OS_NAME.zip
+      file: $HOME/artifacts/{{ cookiecutter.repo_name }}-$TRAVIS_OS_NAME-$TRAVIS_TAG.zip
       skip_cleanup: true
       on:
           condition: -n "$GITHUB_TOKEN"
