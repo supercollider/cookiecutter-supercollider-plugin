@@ -6,7 +6,7 @@ from subprocess import check_call
 from subprocess import call
 import os
 
-git_url = 'git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}'
+git_url = 'https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}'
 sc_path = '{{ cookiecutter.full_path_to_supercollider_source }}'
 script_path = os.path.join(sc_path, 'tools/cmake_gen/generate_server_plugin_cmake.py')
 
