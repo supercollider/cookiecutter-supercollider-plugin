@@ -141,11 +141,7 @@ Requirements
 Known issues and future work
 ----------------------------
 
-- CMake >= 3.10 is required, but it should be possible to use >= 3.5. Flags for
-`cmake_host_system_information` were not added until 3.10
-- Linux build fails for previous reason
-- Add ability & info for deploying releases to github
-- Add info for post-project setup
+- Add info for post-project setup?
 - Better default install location
 
 [cookiecutter]: https://github.com/audreyr/cookiecutter
