@@ -97,6 +97,37 @@ Travis: https://docs.travis-ci.com/user/getting-started/
 
 AppVeyor: https://ci.appveyor.com/signup
 
+### GitHub Deployment
+
+Your auto-generated project will contain configuration that makes it easy to deploy pre-built
+versions of your library to GitHub.
+
+For AppVeyor:
+
+1. Go to https://github.com/settings/tokens and generate a new token with `repo` scope. Make sure to
+   save the token if you want to use it later.
+2. Go to https://ci.appveyor.com/tools/encrypt and encrypt your token.
+3. Paste the encrypted token into .appveyor.yml, at the line with `YOUR_TOKEN_HERE`.
+
+For Travis-CI:
+
+1. Go to https://github.com/settings/tokens and generate a new token with `repo` scope, or use the
+   same token you generated for AppVeyor. Make sure to save the token if you want to use it later.
+2. Sign in to https://travis-ci.org, go to your repository, and click "More options" -> "Settings".
+3. Under Environment Variables enter a new variable. Set the Name to `GITHUB_TOKEN`, set the Value
+   to the raw token you got from GitHub, make sure "Display value in build log" is turned _off_, and
+   click "Add." Travis will ensure that your token is never visible as plaintext in the log for your
+   project.
+
+If you run into issues with permissions, double-check that you have given your token(s) `repo`
+scope.
+
+### Newer compiler toolchains in Travis
+
+If you want a newer compiler toolchain than what is currently being used for Travis's Linux builds,
+check https://docs.travis-ci.com/user/languages/cpp/#c11c11-and-beyond-and-toolchain-versioning.
+This is especially relevant if you would like to build with a higher C++ standard than C++11.
+
 Requirements
 ------------
 
