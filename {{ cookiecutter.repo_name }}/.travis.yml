@@ -30,6 +30,6 @@ deploy:
       file: $HOME/artifacts/{{ cookiecutter.repo_name }}-$TRAVIS_OS_NAME.zip
       skip_cleanup: true
       on:
-          condition: ! -z $GITHUB_TOKEN
+          condition: -n "$GITHUB_TOKEN"
           tags: true
           all_branches: true
