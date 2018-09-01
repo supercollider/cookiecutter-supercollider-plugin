@@ -34,3 +34,16 @@ before_build:
 build_script:
 - cmake -G "%CMAKE_GENERATOR%" -DSC_PATH=../supercollider -DCMAKE_INSTALL_PREFIX=_install ..
 - cmake --build . --target install --config %CMAKE_CONFIGURATION%
+
+artifacts:
+- path: build\_install
+  name: {{ cookiecutter.repo_name }}-windows-$(ARCH)-$(APPVEYOR_REPO_TAG_NAME)
+
+# deploy:
+# - provider: GitHub
+#   description: {{ cookiecutter.plugin_description }} - Release $(APPVEYOR_REPO_TAG_NAME)
+#   artifact: {{ cookiecutter.repo_name }}-windows-$(ARCH)-$(APPVEYOR_REPO_TAG_NAME)
+#   auth_token:
+#       secure: YOUR_TOKEN_HERE
+#   on:
+#       appveyor_repo_tag: true

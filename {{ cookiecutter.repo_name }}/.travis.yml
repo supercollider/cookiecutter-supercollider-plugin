@@ -17,3 +17,19 @@ before_script:
 
 script:
     - cmake --build . --target install
+
+before_deploy:
+    - mkdir -p $HOME/artifacts
+    - cd $TRAVIS_BUILD_DIR/build/_install
+    - zip -r --symlinks $HOME/artifacts/{{ cookiecutter.repo_name }}-$TRAVIS_OS_NAME.zip *
+
+deploy:
+    # github releases - only tags
+    - provider: releases
+      api_key: $GITHUB_TOKEN
+      file: $HOME/artifacts/{{ cookiecutter.repo_name }}-$TRAVIS_OS_NAME.zip
+      skip_cleanup: true
+      on:
+          condition: $TRAVIS_OS_NAME = osx && ! -z $GITHUB_TOKEN
+          tags: true
+          all_branches: true

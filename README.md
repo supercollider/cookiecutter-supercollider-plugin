@@ -107,7 +107,8 @@ For AppVeyor:
 1. Go to https://github.com/settings/tokens and generate a new token with `repo` scope. Make sure to
    save the token if you want to use it later.
 2. Go to https://ci.appveyor.com/tools/encrypt and encrypt your token.
-3. Paste the encrypted token into .appveyor.yml, at the line with `YOUR_TOKEN_HERE`.
+3. Paste the encrypted token into `.appveyor.yml`, at the line with `YOUR_TOKEN_HERE`.
+4. Uncomment the `deploy` section of `.appveyor.yml`.
 
 For Travis-CI:
 
@@ -118,6 +119,7 @@ For Travis-CI:
    to the raw token you got from GitHub, make sure "Display value in build log" is turned _off_, and
    click "Add." Travis will ensure that your token is never visible as plaintext in the log for your
    project.
+4. You don't need to modify `.travis.yml` at all.
 
 If you run into issues with permissions, double-check that you have given your token(s) `repo`
 scope.
