@@ -77,6 +77,20 @@ with `--help`.
 
     $ python ../supercollider/tools/cmake_gen/generate_server_plugin_cmake.py --help
 
+Explanation of questionnaire terms:
+
+- project\_name: The name of the project, used in the README and CMakeLists.txt. Furthermore, the
+  project\_name with spaces removed will be used as the base install folder.
+- project\_namespace: C++ namespace for your plugin(s).
+- repo\_name: GitHub repository name
+- plugin\_name: Name of the first plugin in your project
+
+Licensing
+---------
+
+The generated project will be GPLv3-licensed. **Make sure that you change the LICENSE file if you
+want to use a more permissive license!**
+
 Advanced instructions
 ---------------------
 
@@ -140,9 +154,6 @@ Requirements
 
 Known issues and future work
 ----------------------------
-
-- Add info for post-project setup?
-- Better default install location
 
 [cookiecutter]: https://github.com/audreyr/cookiecutter
 [cookiecutter documentation]: https://cookiecutter.readthedocs.io/en/0.9.1/advanced_usage.html#user-config-0-7-0
