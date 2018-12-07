@@ -13,10 +13,7 @@ matrix:
     - os: osx
 
 before_install:
-- pip --version
-- python --version
-- pip3 --version
-- pip3 install cookiecutter
+- pip install cookiecutter
 - git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider
 
 before_script:
@@ -39,3 +36,10 @@ before_script:
 
 script:
 - cmake --build . --target install
+
+after_script:
+- echo "sc file contents:"
+- cat _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/Classes/TEST_PLUGIN_NAME.sc
+
+- echo "schelp file contents:"
+- cat _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/Help/TEST_PLUGIN_NAME.schelp

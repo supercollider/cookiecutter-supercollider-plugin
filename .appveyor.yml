@@ -51,3 +51,10 @@ before_build:
 
 build_script:
 - cmake --build . --target install --config %CMAKE_CONFIGURATION%
+
+after_build:
+- echo "sc file contents:"
+- type _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/Classes/TEST_PLUGIN_NAME.sc
+
+- echo "schelp file contents:"
+- type _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/Help/TEST_PLUGIN_NAME.schelp
