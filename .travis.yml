@@ -1,5 +1,3 @@
-language: python
-
 addons:
     homebrew:
         packages:
@@ -10,7 +8,9 @@ matrix:
     - os: linux
       sudo: required
       python: "3.6"
+      language: python
     - os: osx
+      language: cpp
 
 before_install:
 - pip install cookiecutter
