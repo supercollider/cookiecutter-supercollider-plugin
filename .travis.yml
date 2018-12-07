@@ -4,14 +4,12 @@ addons:
     homebrew:
         packages:
         - python3
-    apt:
-        packages:
-        - python3
 
 matrix:
     include:
     - os: linux
       sudo: required
+      python: "3.6"
     - os: osx
 
 before_install:
