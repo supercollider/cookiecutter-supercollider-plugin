@@ -1,0 +1,67 @@
+version: '{build}'
+
+clone_depth: 1
+
+# https://www.appveyor.com/docs/build-environment/#build-worker-images
+image: Visual Studio 2017
+
+test: off
+
+environment:
+    CMAKE_CONFIGURATION: Debug
+
+    matrix:
+        - CMAKE_GENERATOR: "Visual Studio 15 2017"
+          PYTHON: "C:\\Python36"
+
+        - CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
+          PYTHON: "C:\\Python36-x64"
+
+install:
+- echo "Set python version"
+- set PATH=%PYTHON%;%PATH%;
+- python --version
+
+- echo "Get SuperCollider"
+- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b cmake-gen-paths
+
+- echo "Upgrade pip"
+- python -m pip install --upgrade pip
+
+- echo "Get cookiecutter"
+- python -m pip --version
+- python -m pip install cookiecutter
+
+before_build:
+- cd ..
+
+- git config --global user.email "you@example.com"
+- git config --global user.name "Your Name"
+
+- echo %cd%\\supercollider>>cmds # sc path
+- echo TEST_PROJECT_NAME>>cmds
+- echo TEST_NAMESPACE>>cmds
+- echo TEST_REPO_NAME>>cmds
+- echo TEST_PLUGIN_NAME>>cmds
+- echo Test plugin description>>cmds
+- echo Test full name>>cmds
+- echo TestGithubUsername>>cmds
+- echo test@username.com>>cmds
+- python -m cookiecutter cookiecutter-supercollider-plugin <cmds
+
+- cd TEST_REPO_NAME
+- echo "CMake file contents:"
+- type CMakeLists.txt
+
+- mkdir build && cd build
+- cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=_install ..
+
+build_script:
+- cmake --build . --target install --config %CMAKE_CONFIGURATION%
+
+after_build:
+- echo "sc file contents:"
+- type _install\\TEST_PROJECT_NAME\\TEST_PLUGIN_NAME\\Classes\\TEST_PLUGIN_NAME.sc
+
+- echo "schelp file contents:"
+- type _install\\TEST_PROJECT_NAME\\TEST_PLUGIN_NAME\\Help\\TEST_PLUGIN_NAME.schelp
