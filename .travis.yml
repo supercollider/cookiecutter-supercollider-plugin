@@ -1,0 +1,40 @@
+language: cpp
+
+addons:
+    homebrew:
+        packages:
+        - python3
+    apt:
+        packages:
+        - python3
+
+matrix:
+    include:
+    - os: linux
+      sudo: required
+    - os: osx
+
+before_install:
+- pip install cookiecutter
+- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider
+
+before_script:
+- cd ..
+
+- echo $PWD/supercollider >>cmds # sc path
+- echo TEST_PROJECT_NAME >>cmds
+- echo TEST_NAMESPACE >>cmds
+- echo TEST_REPO_NAME >>cmds
+- echo TEST_PLUGIN_NAME >> cmds
+- echo "Test plugin description" >>cmds
+- echo "Test full name" >> cmds
+- echo TestGithubUsername >>cmds
+- echo 'test@username.com' >>cmds
+- cookiecutter cookiecutter-supercollider-plugin <cmds
+
+- cd TEST_REPO_NAME
+- mkdir build && cd build
+- cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=_install ..
+
+script:
+- cmake --build . --target install
