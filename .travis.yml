@@ -13,6 +13,8 @@ matrix:
     - os: osx
 
 before_install:
+- pip --version
+- python --version
 - pip3 --version
 - pip3 install cookiecutter
 - git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider
