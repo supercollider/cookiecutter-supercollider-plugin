@@ -46,6 +46,9 @@ before_build:
 - cookiecutter cookiecutter-supercollider-plugin <cmds
 
 - cd TEST_REPO_NAME
+- echo "CMake file contents:"
+- type CMakeLists.txt
+
 - mkdir build && cd build
 - cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=_install ..
 

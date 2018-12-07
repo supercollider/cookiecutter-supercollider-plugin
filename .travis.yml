@@ -31,6 +31,9 @@ before_script:
 - cookiecutter cookiecutter-supercollider-plugin <cmds
 
 - cd TEST_REPO_NAME
+- echo "CMake file contents:"
+- cat CMakeLists.txt
+
 - mkdir build && cd build
 - cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=_install ..
 
