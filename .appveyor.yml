@@ -23,7 +23,7 @@ install:
 - python --version
 
 - echo "Get SuperCollider"
-- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b cmake-gen-paths
+- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b cmake-tools
 
 - echo "Upgrade pip"
 - python -m pip install --upgrade pip
