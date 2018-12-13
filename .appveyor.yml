@@ -67,5 +67,5 @@ after_build:
 - type _install\\TEST_PROJECT_NAME\\TEST_PLUGIN_NAME\\Help\\TEST_PLUGIN_NAME.schelp
 
 - echo "testing existence of plugin files:"
-- exist _install\\TEST_PROJECT_NAME\\TEST_PLUGIN_NAME\\TEST_PLUGIN_NAME_scsynth.scx
-- exist _install\\TEST_PROJECT_NAME\\TEST_PLUGIN_NAME\\TEST_PLUGIN_NAME_supernova.scx
+- if not exist _install\\TEST_PROJECT_NAME\\TEST_PLUGIN_NAME\\TEST_PLUGIN_NAME_scsynth.scx exit 1
+- if not exist _install\\TEST_PROJECT_NAME\\TEST_PLUGIN_NAME\\TEST_PLUGIN_NAME_supernova.scx exit 1
