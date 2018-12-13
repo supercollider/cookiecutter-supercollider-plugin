@@ -14,7 +14,7 @@ matrix:
 
 before_install:
 - pip3 install cookiecutter
-- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider
+- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b cmake-tools
 
 before_script:
 - cd ..
