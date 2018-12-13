@@ -35,7 +35,7 @@ before_script:
 - cat CMakeLists.txt
 
 - mkdir build && cd build
-- cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=_install ..
+- cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=_install -DSTRICT=ON ..
 
 script:
 - cmake --build . --target install

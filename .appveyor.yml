@@ -54,7 +54,7 @@ before_build:
 - type CMakeLists.txt
 
 - mkdir build && cd build
-- cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=_install ..
+- cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=_install -DSTRICT=ON ..
 
 build_script:
 - cmake --build . --target install --config %CMAKE_CONFIGURATION%
