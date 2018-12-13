@@ -14,7 +14,7 @@ matrix:
 
 before_install:
 - pip3 install cookiecutter
-- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider
+- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b topic/cookie-fixes
 
 before_script:
 - cd ..
@@ -35,7 +35,7 @@ before_script:
 - cat CMakeLists.txt
 
 - mkdir build && cd build
-- cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=_install ..
+- cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=_install -DSTRICT=ON ..
 
 script:
 - cmake --build . --target install

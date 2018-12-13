@@ -23,7 +23,7 @@ install:
 - python --version
 
 - echo "Get SuperCollider"
-- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b cmake-gen-paths
+- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b topic/cookie-fixes
 
 - echo "Upgrade pip"
 - python -m pip install --upgrade pip
@@ -54,7 +54,7 @@ before_build:
 - type CMakeLists.txt
 
 - mkdir build && cd build
-- cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=_install ..
+- cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=_install -DSTRICT=ON ..
 
 build_script:
 - cmake --build . --target install --config %CMAKE_CONFIGURATION%
