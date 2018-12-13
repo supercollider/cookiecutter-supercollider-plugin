@@ -9,8 +9,10 @@ matrix:
       sudo: required
       python: "3.6"
       language: python
+      env: PLUGIN_EXT=so
     - os: osx
       language: cpp
+      env: PLUGIN_EXT=scx
 
 before_install:
 - pip3 install cookiecutter
@@ -46,3 +48,7 @@ after_script:
 
 - echo "schelp file contents:"
 - cat _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/Help/TEST_PLUGIN_NAME.schelp
+
+- echo "testing existence of plugin files:"
+- [[ -f _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/TEST_PLUGIN_NAME_scsynth.$PLUGIN_EXT ]]
+- [[ -f _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/TEST_PLUGIN_NAME_supernova.$PLUGIN_EXT ]]
