@@ -2,6 +2,11 @@ addons:
     homebrew:
         packages:
         - python3
+    apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-7
 
 matrix:
     include:
@@ -9,12 +14,19 @@ matrix:
       sudo: required
       python: "3.6"
       language: python
+      env:
+      - PLUGIN_EXT=so
+      - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
     - os: osx
       language: cpp
+      env:
+      - PLUGIN_EXT=scx
+      - MATRIX_EVAL=":"
 
 before_install:
+- eval "${MATRIX_EVAL}"
 - pip3 install cookiecutter
-- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider
+- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b topic/cookie-fixes
 
 before_script:
 - cd ..
@@ -35,7 +47,7 @@ before_script:
 - cat CMakeLists.txt
 
 - mkdir build && cd build
-- cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=_install ..
+- cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=_install -DSTRICT=ON ..
 
 script:
 - cmake --build . --target install
@@ -46,3 +58,7 @@ after_script:
 
 - echo "schelp file contents:"
 - cat _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/Help/TEST_PLUGIN_NAME.schelp
+
+- echo "testing existence of plugin files:"
+- [[ -f _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/TEST_PLUGIN_NAME_scsynth.$PLUGIN_EXT ]]
+- [[ -f _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/TEST_PLUGIN_NAME_supernova.$PLUGIN_EXT ]]
