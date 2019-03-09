@@ -28,12 +28,12 @@ Then, use CMake to configure and build it. Depending on your toolchain:
     # macOS + Xcode
     cmake .. -GXcode
     cmake --build . --config Release
-    cmake --build . --config Release --target Install
+    cmake --build . --config Release --target install
 
     # Windows + VS 2017
     cmake .. -G"Visual Studio 15 2017 Win64"
     cmake --build . --config Release
-    cmake --build . --config Release --target Install
+    cmake --build . --config Release --target install
 
 You may want to manually specify the install location in the first step to point it at your
 SuperCollider extensions directory: add the option `-DCMAKE_INSTALL_PREFIX=/path/to/extensions`.
