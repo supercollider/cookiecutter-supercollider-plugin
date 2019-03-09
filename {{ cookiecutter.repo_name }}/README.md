@@ -11,15 +11,14 @@ Author: {{ cookiecutter.full_name }}
 
 ### Building
 
-Clone the project, then use CMake to configure and build it. If you start from a directory that
-contains the directory where you cloned SuperCollider, the following commands will work.
+Clone the project:
 
     git clone https://{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
     cd {{ cookiecutter.repo_name }}
     mkdir build
     cd build
 
-Then, depending on your toolchain:
+Then, use CMake to configure and build it. Depending on your toolchain:
 
     # Linux + make
     cmake .. -DCMAKE_BUILD_TYPE=Release
@@ -38,6 +37,12 @@ Then, depending on your toolchain:
 
 You may want to manually specify the install location in the first step to point it at your
 SuperCollider extensions directory: add the option `-DCMAKE_INSTALL_PREFIX=/path/to/extensions`.
+
+It's expected that you are running the above commands from the same directory that contains your clone of the SuperCollider source, called `supercollider`.
+If you are running `cmake` from a different directory, or if your SuperCollider source directory is not named `supercollider`, add its path when setting up the project, e.g. for macOS:
+```
+cmake .. -DSC_PATH=/Path/to/sc/source -GXcode`
+```
 
 ### Developing
 
