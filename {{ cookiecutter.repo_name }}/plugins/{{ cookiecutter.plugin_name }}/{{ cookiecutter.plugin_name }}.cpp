@@ -10,7 +10,7 @@ namespace {{ cookiecutter.project_namespace }} {
 
 {{ cookiecutter.plugin_name }}::{{ cookiecutter.plugin_name }}()
 {
-    set_calc_function<{{ cookiecutter.plugin_name }}, &{{ cookiecutter.plugin_name }}::next>();
+    mCalcFunc = make_calc_function<{{ cookiecutter.plugin_name }}, &{{ cookiecutter.plugin_name }}::next>();
     next(1);
 }
 
