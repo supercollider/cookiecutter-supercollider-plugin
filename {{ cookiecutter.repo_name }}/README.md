@@ -18,20 +18,9 @@ Clone the project:
     mkdir build
     cd build
 
-Then, use CMake to configure and build it. Depending on your toolchain:
+Then, use CMake to configure and build it:
 
-    # Linux + make
     cmake .. -DCMAKE_BUILD_TYPE=Release
-    make -j
-    make install
-
-    # macOS + Xcode
-    cmake .. -GXcode
-    cmake --build . --config Release
-    cmake --build . --config Release --target install
-
-    # Windows + VS 2017
-    cmake .. -G"Visual Studio 15 2017 Win64"
     cmake --build . --config Release
     cmake --build . --config Release --target install
 
