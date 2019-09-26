@@ -7,8 +7,7 @@
 
 namespace {{ cookiecutter.project_namespace }} {
 
-class {{ cookiecutter.plugin_name }} : public SCUnit
-{
+class {{ cookiecutter.plugin_name }} : public SCUnit {
 public:
     {{ cookiecutter.plugin_name }}();
 

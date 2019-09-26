@@ -6,13 +6,11 @@ A [cookiecutter] project template for [SuperCollider] server plugins.
 To create a SuperCollider server plugin using this template, first
 [install cookiecutter][installation instructions].
 
-**Note**: This cookiecutter template requires a Python version `> 3.2`. If you have multiple
-versions of python and are installing via `pip`, you may need to be explicit about which version
-of Python you use to install it to ensure cookiecutter uses a compatible version. 
-E.g. on macOS:
-```
-python3.7 -m pip install cookiecutter
-```
+This cookiecutter template requires at least Python 3.2. If you have multiple versions of python and
+are installing via `pip`, you may need to be explicit about which version of Python you use to
+install it to ensure cookiecutter uses a compatible version. For example, on macOS with Python 3.7:
+
+    $ python3.7 -m pip install cookiecutter
 
 Then run:
 
