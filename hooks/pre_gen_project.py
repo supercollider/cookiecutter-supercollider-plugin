@@ -5,7 +5,7 @@
 import os
 import sys
 
-sc_path = '{{ cookiecutter.full_path_to_supercollider_source }}'
+sc_path = '{{ cookiecutter.full_path_to_supercollider_source.strip() }}'
 
 print('\nRunning pre-project-generation hook...')
 

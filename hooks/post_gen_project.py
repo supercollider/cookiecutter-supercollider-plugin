@@ -7,7 +7,7 @@ from subprocess import call
 import os
 
 git_url = 'https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}'
-sc_path = '{{ cookiecutter.full_path_to_supercollider_source }}'
+sc_path = '{{ cookiecutter.full_path_to_supercollider_source.strip() }}'
 script_path = os.path.join(sc_path, 'tools/cmake_gen/generate_server_plugin_cmake.py')
 
 print('\nRunning post-project-generation hook...')
