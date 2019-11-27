@@ -26,7 +26,7 @@ matrix:
 before_install:
 - eval "${MATRIX_EVAL}"
 - pip3 install cookiecutter
-- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider -b topic/cookie-fixes
+- git clone --depth 1 https://github.com/supercollider/supercollider.git ../supercollider
 
 before_script:
 - cd ..
