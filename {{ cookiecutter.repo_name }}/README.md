@@ -13,7 +13,7 @@ Author: {{ cookiecutter.full_name }}
 
 Clone the project:
 
-    git clone https://{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
+    git clone https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.repo_name }}
     cd {{ cookiecutter.repo_name }}
     mkdir build
     cd build
