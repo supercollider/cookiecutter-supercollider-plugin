@@ -57,8 +57,8 @@ after_script:
 - cat _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/Classes/TEST_PLUGIN_NAME.sc
 
 - echo "schelp file contents:"
-- cat _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/Help/TEST_PLUGIN_NAME.schelp
+- cat _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/HelpSource/Classes/TEST_PLUGIN_NAME.schelp
 
 - echo "testing existence of plugin files:"
-- [[ -f _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/TEST_PLUGIN_NAME_scsynth.$PLUGIN_EXT ]]
-- [[ -f _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/TEST_PLUGIN_NAME_supernova.$PLUGIN_EXT ]]
+- 'if [[ ! -f _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/TEST_PLUGIN_NAME_scsynth.$PLUGIN_EXT ]]; then exit 1; fi;'
+- 'if [[ ! -f _install/TEST_PROJECT_NAME/TEST_PLUGIN_NAME/TEST_PLUGIN_NAME_supernova.$PLUGIN_EXT ]]; then exit 1; fi;'
