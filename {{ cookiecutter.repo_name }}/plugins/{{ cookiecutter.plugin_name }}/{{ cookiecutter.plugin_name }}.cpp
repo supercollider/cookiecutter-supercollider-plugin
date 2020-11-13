@@ -29,5 +29,5 @@ void {{ cookiecutter.plugin_name }}::next(int nSamples) {
 PluginLoad({{ cookiecutter.plugin_name }}UGens) {
     // Plugin magic
     ft = inTable;
-    registerUnit<{{ cookiecutter.project_namespace }}::{{ cookiecutter.plugin_name }}>(ft, "{{ cookiecutter.plugin_name }}");
+    registerUnit<{{ cookiecutter.project_namespace }}::{{ cookiecutter.plugin_name }}>(ft, "{{ cookiecutter.plugin_name }}", false);
 }
