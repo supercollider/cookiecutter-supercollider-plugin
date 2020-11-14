@@ -76,7 +76,7 @@ Enter the directory and build the project:
     $ cd simplegain
     $ mkdir build
     $ cd build
-    $ cmake .. -DCMAKE_BUILD_TYPE=Debug
+    $ cmake .. DSC_PATH=/path/to/supercollider/source -DCMAKE_BUILD_TYPE=Debug
     $ cmake --build . --config Debug
 
 If you add more plugins, or add or remove files, make sure to regenerate the CMakeLists.txt file
