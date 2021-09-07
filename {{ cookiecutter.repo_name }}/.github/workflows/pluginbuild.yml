@@ -23,7 +23,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: supercollider/supercollider
-        path: ${{github.workspace}}/supercollider
+        path: {{"${{"}}github.workspace{{"}}"}}/supercollider
         ref: main
 
     - name: Create Build Environment
