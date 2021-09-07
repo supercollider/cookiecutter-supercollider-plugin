@@ -56,14 +56,14 @@ jobs:
       if: matrix.os != 'windows-latest'
       shell: bash
       working-directory: {{"${{"}}github.workspace{{"}}"}}/build
-      run: zip -r {{cookiecutter.project_name}}-{{"${{"}}runner.os{{"}}"}} install/{{cookiecutter.project_name}}
+      run: zip -r "{{cookiecutter.plugin_name}}-{{"${{"}}runner.os{{"}}"}}" "install/{{cookiecutter.plugin_name}}"
 
       # Gather all files in a zip
     - name: Zip up build (Windows)
       if: matrix.os == 'windows-latest'
       shell: pwsh
       working-directory: {{"${{"}}github.workspace{{"}}"}}\build
-      run: Compress-7Zip "install\{{cookiecutter.project_name}}" -ArchiveFileName "{{cookiecutter.project_name}}-{{"${{"}}runner.os{{"}}"}}.zip" -Format Zip
+      run: Compress-7Zip "install\{{cookiecutter.plugin_name}}" -ArchiveFileName "{{cookiecutter.plugin_name}}-{{"${{"}}runner.os{{"}}"}}.zip" -Format Zip
 
     - name: Check if release has been created
       uses: mukunku/tag-exists-action@v1.0.0
@@ -77,6 +77,6 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: {{"${{"}} secrets.GITHUB_TOKEN {{"}}"}}
-        file: {{"${{"}}github.workspace{{"}}"}}/build/{{cookiecutter.project_name}}-{{"${{"}}runner.os{{"}}"}}.zip
-        asset_name: {{cookiecutter.project_name}}-{{"${{"}}runner.os{{"}}"}}.zip
+        file: {{"${{"}}github.workspace{{"}}"}}/build/{{cookiecutter.plugin_name}}-{{"${{"}}runner.os{{"}}"}}.zip
+        asset_name: {{cookiecutter.plugin_name}}-{{"${{"}}runner.os{{"}}"}}.zip
         tag: {{"${{"}} github.ref {{"}}"}}
