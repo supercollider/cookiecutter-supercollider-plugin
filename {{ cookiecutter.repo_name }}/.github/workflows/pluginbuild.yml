@@ -13,9 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Install 7Zip (Windows)
-      if: matrix.os == 'windows-latest'
+      if: runner.os == 'Windows'
       shell: powershell
       run: Install-Module 7Zip4PowerShell -Force -Verbose
 
@@ -57,7 +57,7 @@ jobs:
       shell: bash
       working-directory: {{"${{"}}github.workspace{{"}}"}}/build
       run: zip -r {{cookiecutter.project_name}}-{{"${{"}}runner.os{{"}}"}} install/{{cookiecutter.project_name}}
-      
+
       # Gather all files in a zip
     - name: Zip up build (Windows)
       if: matrix.os == 'windows-latest'
@@ -68,7 +68,7 @@ jobs:
     - name: Check if release has been created
       uses: mukunku/tag-exists-action@v1.0.0
       id: checkTag
-      with: 
+      with:
         tag: 'v1'
       env:
         GITHUB_TOKEN: {{"${{"}} secrets.GITHUB_TOKEN {{"}}"}}
@@ -85,7 +85,7 @@ jobs:
         release_name: {{cookiecutter.project_name}}-{{"${{"}} github.ref {{"}}"}}
         draft: false
         prerelease: false
-          
+
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
