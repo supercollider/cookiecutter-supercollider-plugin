@@ -47,12 +47,16 @@ jobs:
       if: matrix.os != 'windows-latest'
       working-directory: {{"${{"}}github.workspace{{"}}"}}/build
       shell: bash
+      env:
+        CMAKE_BUILD_PARALLEL_LEVEL: 4
       run: cmake --build . --config "Release" --target install
 
     - name: Build (Windows)
       working-directory: {{"${{"}}github.workspace{{"}}"}}\build
       if: matrix.os == 'windows-latest'
       shell: pwsh
+      env:
+        CMAKE_BUILD_PARALLEL_LEVEL: 4
       run: cmake --build . --config "Release" --target install
 
       # Gather all files in a zip
