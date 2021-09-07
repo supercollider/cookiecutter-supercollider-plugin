@@ -73,19 +73,6 @@ jobs:
       env:
         GITHUB_TOKEN: {{"${{"}} secrets.GITHUB_TOKEN {{"}}"}}
 
-    # Publish build
-    - name: Create Release
-      if: steps.checkTag.outputs.exists == false
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: {{"${{"}} secrets.GITHUB_TOKEN {{"}}"}} # This token is provided by Actions, you do not need to create your own token
-      with:
-        tag_name: {{"${{"}} github.ref {{"}}"}}
-        release_name: {{cookiecutter.project_name}}-{{"${{"}} github.ref {{"}}"}}
-        draft: false
-        prerelease: false
-
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
