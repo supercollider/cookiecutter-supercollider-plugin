@@ -12,66 +12,55 @@ jobs:
       matrix:
         include:
 
-    steps:
-    - uses: actions/checkout@v2
           - name: macOS
             os: macos-10.15
 
-    - name: Install 7Zip (Windows)
-      if: runner.os == 'Windows'
-      shell: powershell
-      run: Install-Module 7Zip4PowerShell -Force -Verbose
           - name: Linux-x64
             os: ubuntu-18.04
 
-    - name: Checkout supercollider
           - name: Windows-x64
             os: windows-2019
+
+    env:
+      SC_PATH: {{"${{"}} github.workspace {{"}}"}}/supercollider
+      BUILD_PATH: {{"${{"}} github.workspace {{"}}"}}/build
+      INSTALL_PATH: {{"${{"}} github.workspace {{"}}"}}/build/Install
+      ARCHIVE_NAME: {{cookiecutter.plugin_name}}-{{"${{"}} matrix.name {{"}}"}}.zip
+    steps:
+    - name: Checkout {{cookiecutter.plugin_name}}
+      uses: actions/checkout@v2
+
+    - name: Checkout SuperCollider
       uses: actions/checkout@v2
       with:
         repository: supercollider/supercollider
-        path: {{"${{"}}github.workspace{{"}}"}}/supercollider
+        path: {{"${{"}} env.SC_PATH {{"}}"}}
         ref: main
 
+      # Create a separate build directory
+      # We'll use this as our working directory for subsequent commands
     - name: Create Build Environment
-      # Some projects don't allow in-source building, so create a separate build directory
-      # We'll use this as our working directory for all subsequent commands
-      run: cmake -E make_directory {{"${{"}}github.workspace{{"}}"}}/build
-
-    - name: Configure CMake (Unix)
       shell: bash
-      if: matrix.os != 'windows-latest'
-      working-directory: {{"${{"}}github.workspace{{"}}"}}/build
-      run: cmake .. -DCMAKE_BUILD_TYPE='Release' -DSC_PATH={{"${{"}}github.workspace{{"}}"}}/supercollider -DCMAKE_INSTALL_PREFIX={{"${{"}}github.workspace{{"}}"}}/build/install
+      run: cmake -E make_directory $BUILD_PATH
 
-    - name: Configure CMake (Windows)
-      if: matrix.os == 'windows-latest'
-      shell: pwsh
-      working-directory: {{"${{"}}github.workspace{{"}}"}}\build
-      run: cmake .. -DCMAKE_BUILD_TYPE='Release' -DSC_PATH={{"${{"}}github.workspace{{"}}"}}\supercollider -DCMAKE_INSTALL_PREFIX={{"${{"}}github.workspace{{"}}"}}\build\install
-
-    - name: Build (Unix)
-      if: matrix.os != 'windows-latest'
-      working-directory: {{"${{"}}github.workspace{{"}}"}}/build
+    - name: Configure CMake
       shell: bash
-      env:
-        CMAKE_BUILD_PARALLEL_LEVEL: 4
-      run: cmake --build . --config "Release" --target install
+      working-directory: {{"${{"}} env.BUILD_PATH {{"}}"}}
+      run: cmake .. -DCMAKE_BUILD_TYPE='Release' -DSC_PATH="$SC_PATH" -DCMAKE_INSTALL_PREFIX="$INSTALL_PATH"
 
-    - name: Build (Windows)
-      working-directory: {{"${{"}}github.workspace{{"}}"}}\build
-      if: matrix.os == 'windows-latest'
-      shell: pwsh
+    - name: Build
+      shell: bash
+      working-directory: {{"${{"}} env.BUILD_PATH {{"}}"}}
       env:
         CMAKE_BUILD_PARALLEL_LEVEL: 4
       run: cmake --build . --config "Release" --target install
 
       # Gather all files in a zip
     - name: Zip up build (Unix)
-      if: matrix.os != 'windows-latest'
+      if: runner.os != 'Windows'
       shell: bash
-      working-directory: {{"${{"}}github.workspace{{"}}"}}/build
-      run: zip -r "{{cookiecutter.plugin_name}}-{{"${{"}}runner.os{{"}}"}}" "install/{{cookiecutter.plugin_name}}"
+      working-directory: {{"${{"}} env.INSTALL_PATH {{"}}"}}
+      run: zip -r "$ARCHIVE_NAME" "{{cookiecutter.plugin_name}}"
 
       # Gather all files in a zip
     - name: Zip up build (Windows)
@@ -84,8 +73,7 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: {{"${{"}} secrets.GITHUB_TOKEN {{"}}"}}
-        file: {{"${{"}}github.workspace{{"}}"}}/build/{{cookiecutter.plugin_name}}-{{"${{"}}runner.os{{"}}"}}.zip
-        asset_name: {{cookiecutter.plugin_name}}-{{"${{"}}runner.os{{"}}"}}.zip
+        file: {{"${{"}} env.INSTALL_PATH {{"}}"}}/{{"${{"}} env.ARCHIVE_NAME {{"}}"}}
         prerelease: true
         body: ""
         tag: {{"${{"}} github.ref {{"}}"}}
