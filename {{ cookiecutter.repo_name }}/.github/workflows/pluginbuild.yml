@@ -6,20 +6,27 @@ on:
 jobs:
   build:
 
-    runs-on: {{"${{"}}matrix.os{{"}}"}}
+    runs-on: {{"${{"}} matrix.os {{"}}"}}
+    name: {{"${{"}} matrix.name {{"}}"}}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-18.04, windows-latest]
+        include:
 
     steps:
     - uses: actions/checkout@v2
+          - name: macOS
+            os: macos-10.15
 
     - name: Install 7Zip (Windows)
       if: runner.os == 'Windows'
       shell: powershell
       run: Install-Module 7Zip4PowerShell -Force -Verbose
+          - name: Linux-x64
+            os: ubuntu-18.04
 
     - name: Checkout supercollider
+          - name: Windows-x64
+            os: windows-2019
       uses: actions/checkout@v2
       with:
         repository: supercollider/supercollider
