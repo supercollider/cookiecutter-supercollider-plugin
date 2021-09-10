@@ -75,10 +75,10 @@ jobs:
 
       # Gather all files in a zip
     - name: Zip up build (Windows)
-      if: matrix.os == 'windows-latest'
-      shell: pwsh
-      working-directory: {{"${{"}}github.workspace{{"}}"}}\build
-      run: Compress-7Zip "install\{{cookiecutter.plugin_name}}" -ArchiveFileName "{{cookiecutter.plugin_name}}-{{"${{"}}runner.os{{"}}"}}.zip" -Format Zip
+      if: runner.os == 'Windows'
+      shell: bash
+      working-directory: {{"${{"}} env.INSTALL_PATH {{"}}"}}
+      run: 7z a "$ARCHIVE_NAME" -tzip "{{cookiecutter.plugin_name}}"
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
