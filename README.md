@@ -102,57 +102,15 @@ want to use a more permissive license!**
 Advanced instructions
 ---------------------
 
-### Continuous Integration: Travis-CI and AppVeyor
+### Use Github Actions to automatically build, compile and release your plugins
 
-Your auto-generated project will contain configuration files for the [Travis-CI][Travis] and
-[AppVeyor] integration services. These are tools that let you see how your project compiles on a
-totally fresh and isolated system. The Travis-CI script is configured for building on Linux (Ubuntu
-14.04) and MacOS; the AppVeyor script is configured for both 32-bit and 64-bit Windows builds.
+When generating a project using this cookiecutter recipe, a config file is included in `.github/workflows/build.yml` containing an action for Github Actions to build, compile and zip up your code for MacOS, Linux and Windows. 
 
-Every time you update your remote repository on GitHub, these scripts will run so you can see
-whether or not your project builds properly in each of the tested environments.
+It is set to trigger on one event: If you push a new tag prefixed with `v` (eg. `v1.0` or `v4.0.1`) to your repo, Github Actions will activate and start the process of building and releasing. If succesful, your finished builds should appear in the *Releases* column.
 
-To enable these services, you need to create accounts with both Travis-CI and AppVeyor, then follow
-their instructions for adding projects. Do this after you create your repository on GitHub.
+You should get an email from Github once the run is finished, but otherwise you can navigate to the *Actions* pane on your Github repository to see the details and command outputs of each build.
 
-Travis: https://docs.travis-ci.com/user/getting-started/
-
-AppVeyor: https://ci.appveyor.com/signup
-
-### GitHub Deployment
-
-Your auto-generated project will contain configuration that makes it easy to deploy pre-built
-versions of your library to GitHub.
-
-For AppVeyor:
-
-1. Go to https://github.com/settings/tokens and generate a new token with `repo` scope. Make sure to
-   save the token if you want to use it later.
-2. Go to https://ci.appveyor.com/tools/encrypt and encrypt your token.
-3. Paste the encrypted token into `.appveyor.yml`, at the line with `YOUR_TOKEN_HERE`.
-4. Uncomment the `deploy` section of `.appveyor.yml`.
-
-For Travis-CI:
-
-1. Go to https://github.com/settings/tokens and generate a new token with `repo` scope, or use the
-   same token you generated for AppVeyor. Make sure to save the token if you want to use it later.
-2. Sign in to https://travis-ci.org, go to your repository, and click "More options" -> "Settings".
-3. Under Environment Variables enter a new variable. Set the Name to `GITHUB_TOKEN`, set the Value
-   to the raw token you got from GitHub, make sure "Display value in build log" is turned _off_, and
-   click "Add." Travis will ensure that your token is never visible as plaintext in the log for your
-   project.
-4. You don't need to modify `.travis.yml` at all.
-
-If you run into issues with permissions, double-check that you have given your token(s) `repo`
-scope.
-
-### Newer compiler toolchains in Travis
-
-If you want a newer compiler toolchain than what is currently being used for Travis's Linux builds,
-check https://docs.travis-ci.com/user/languages/cpp/#c11c11-and-beyond-and-toolchain-versioning.
-This is especially relevant if you would like to build with a higher C++ standard than C++11.
-
-Requirements
+### Requirements
 ------------
 
 * Basic development tools (C++ compiler, cmake, etc.)
