@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''Init git repository and make initial commit.'''
 
@@ -16,7 +16,7 @@ print('\nInitializing new Git repository')
 check_call(['git', 'init'])
 print('\nRunning CMake generation script')
 call([
-    'python',
+    'python3',
     script_path,
     '.',
     '-P', '{{ cookiecutter.project_name }}',

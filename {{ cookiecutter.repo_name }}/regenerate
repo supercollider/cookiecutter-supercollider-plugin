@@ -1,1 +1,1 @@
-python {{ cookiecutter.full_path_to_supercollider_source }}/tools/cmake_gen/generate_server_plugin_cmake.py -P "{{ cookiecutter.project_name }}" -p "plugins/{{ cookiecutter.plugin_name }}" -a "{{ cookiecutter.full_name }}"
+python3 {{ cookiecutter.full_path_to_supercollider_source }}/tools/cmake_gen/generate_server_plugin_cmake.py -P "{{ cookiecutter.project_name }}" -p "plugins/{{ cookiecutter.plugin_name }}" -a "{{ cookiecutter.full_name }}"
