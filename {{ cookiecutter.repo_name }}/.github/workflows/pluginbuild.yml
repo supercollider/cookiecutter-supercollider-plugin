@@ -5,21 +5,22 @@ on:
 
 jobs:
   build:
-
     runs-on: {{"${{"}} matrix.os {{"}}"}}
     name: {{"${{"}} matrix.name {{"}}"}}
+#   You may need to uncomment this part if using granular workflows.
+#   permissions:
+#     content: write
     strategy:
       matrix:
         include:
-
           - name: macOS
-            os: macos-10.15
+            os: macos-latest
 
           - name: Linux-x64
-            os: ubuntu-18.04
+            os: ubuntu-latest
 
           - name: Windows-x64
-            os: windows-2019
+            os: windows-latest
 
     env:
       SC_PATH: {{"${{"}} github.workspace {{"}}"}}/supercollider
@@ -28,10 +29,10 @@ jobs:
       ARCHIVE_NAME: {{cookiecutter.plugin_name}}-{{"${{"}} matrix.name {{"}}"}}.zip
     steps:
     - name: Checkout {{cookiecutter.plugin_name}}
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Checkout SuperCollider
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: supercollider/supercollider
         path: {{"${{"}} env.SC_PATH {{"}}"}}
