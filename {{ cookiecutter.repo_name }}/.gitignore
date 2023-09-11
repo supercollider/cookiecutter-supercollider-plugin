@@ -1,3 +1,5 @@
 .vimrc
 
 build*
+
+.DS_Store
