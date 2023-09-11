@@ -14,13 +14,19 @@ namespace {{ cookiecutter.project_namespace }} {
 }
 
 void {{ cookiecutter.plugin_name }}::next(int nSamples) {
+
+    // Audio rate input
     const float* input = in(0);
-    const float* gain = in(1);
+
+    // Control rate parameter: gain.
+    const float gain = in0(1);
+
+    // Output buffer
     float* outbuf = out(0);
 
     // simple gain function
     for (int i = 0; i < nSamples; ++i) {
-        outbuf[i] = input[i] * gain[i];
+        outbuf[i] = input[i] * gain;
     }
 }
 
